@@ -89,7 +89,7 @@ Severity: Medium
 
 
 
-4) Verify Triggered Alerts
+### 4) Verify Triggered Alerts
 Open Activity → Triggered Alerts and confirm alert firings while you RDP’d in from the VPN IP.
 
 📸 Screenshot:
