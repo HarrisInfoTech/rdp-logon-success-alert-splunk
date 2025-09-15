@@ -40,7 +40,7 @@ Logon_Type=10 = RemoteInteractive (RDP).
 Logon_Type=7 = Unlock (included per my test).
 
 📸 Screenshots:
-
+![Splunk](./screenshots/splunk-search-4624-rdp.png)
 
 ### 2) Temporarily loosen RDP to generate telemetry
 Vultr → Firewall Group (for the target VM):
@@ -52,7 +52,7 @@ Add: MS RDP, port 3389/tcp, Source: Anywhere (temporary for test).
 Then RDP into the VM using a VPN.
 
 📸 Screenshots:
-
+![Splunk](./screenshots/vultr-fw-3389-anywhere-temp.png)
 
 
 ⚠️ After testing, re-lock 3389 to your IP or disable exposure entirely.
@@ -81,13 +81,15 @@ Trigger actions: Add to Triggered Alerts
 Severity: Medium
 
 📸 Screenshots:
-
+![Splunk Alert](./screenshots/splunk-save-as-alert.png)
 
 
 ### 4) Verify Triggered Alerts
 Open Activity → Triggered Alerts and confirm alert firings while you RDP’d in from the VPN IP.
 
 📸 Screenshot:
+![Splunk](./screenshots/splunk-triggered-alerts.png)
+
 
 🔒 Post-Test Hardening (What I Set Back)
 Vultr firewall: revert 3389/tcp from “Anywhere” back to My IP only (or disable if not needed).
