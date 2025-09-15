@@ -26,12 +26,14 @@ I built a **scheduled Splunk alert** to detect **successful RDP logons**. I gene
 ### 1) Build the search in Splunk
 Open **Search & Reporting** and run:
 
-
+```bash
 index="mydfir-ad" sourcetype="WinEventLog:Security" EventCode=4624
 ( Logon_Type=10 OR Logon_Type=7 )
 Source_Network_Address!="-" Source_Network_Address!=40.*
 ( host="YOUR-DC-HOSTNAME" OR ComputerName="YOUR-DC-HOSTNAME" )
 | stats count by _time, ComputerName, Source_Network_Address, user, Logon_Type
+
+```
 Notes:
 
 Logon_Type=10 = RemoteInteractive (RDP).
