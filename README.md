@@ -30,7 +30,6 @@ Open **Search & Reporting** and run:
 index="mydfir-ad" sourcetype="WinEventLog:Security" EventCode=4624
 ( Logon_Type=10 OR Logon_Type=7 )
 Source_Network_Address!="-" Source_Network_Address!=40.*
-( host="YOUR-DC-HOSTNAME" OR ComputerName="YOUR-DC-HOSTNAME" )
 | stats count by _time, ComputerName, Source_Network_Address, user, Logon_Type
 
 ```
@@ -39,10 +38,6 @@ Notes:
 Logon_Type=10 = RemoteInteractive (RDP).
 
 Logon_Type=7 = Unlock (included per my test).
-
-Replace YOUR-DC-HOSTNAME with your DC (you can also filter by host=… only).
-
-The Windows TA often maps account to user; if empty, try TargetUserName or Account_Name.
 
 📸 Screenshots:
 
@@ -54,7 +49,7 @@ Remove restrictive RDP rule.
 
 Add: MS RDP, port 3389/tcp, Source: Anywhere (temporary for test).
 
-Then RDP into the VM using a VPN so the Source_Network_Address is a different IP than usual.
+Then RDP into the VM using a VPN.
 
 📸 Screenshots:
 
