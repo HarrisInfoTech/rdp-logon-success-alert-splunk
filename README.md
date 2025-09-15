@@ -26,7 +26,7 @@ I built a **scheduled Splunk alert** to detect **successful RDP logons**. I gene
 ### 1) Build the search in Splunk
 Open **Search & Reporting** and run:
 
-```spl
+
 index="mydfir-ad" sourcetype="WinEventLog:Security" EventCode=4624
 ( Logon_Type=10 OR Logon_Type=7 )
 Source_Network_Address!="-" Source_Network_Address!=40.*
@@ -45,7 +45,7 @@ The Windows TA often maps account to user; if empty, try TargetUserName or Accou
 📸 Screenshots:
 
 
-2) Temporarily loosen RDP to generate telemetry
+### 2) Temporarily loosen RDP to generate telemetry
 Vultr → Firewall Group (for the target VM):
 
 Remove restrictive RDP rule.
@@ -60,7 +60,7 @@ Then RDP into the VM using a VPN so the Source_Network_Address is a different IP
 
 ⚠️ After testing, re-lock 3389 to your IP or disable exposure entirely.
 
-3) Save search as an Alert
+### 3) Save search as an Alert
 With the SPL still in the search bar:
 
 Save As → Alert
